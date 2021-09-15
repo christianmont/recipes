@@ -72,13 +72,9 @@ app.use(passport.session())
 app.use(express.static(path.join(__dirname, 'public')))
 
 // Routes
-//app.use('/', require('./routes/index'))
+app.use('/', require('./routes/index'))
 app.use('/auth', require('./routes/auth'))
 app.use('/recipes', require('./routes/recipes'))
-
-app.get('/', async (req, res) => {
-    res.send("hello")
-})
 
 //404 Page
 app.use(function(req,res){
@@ -88,11 +84,8 @@ app.use(function(req,res){
     })
 });
 
-
-
-const server = http.createServer(app);
-
-const port = process.env.PORT || 3000;
-server.listen(port);
+app.listen(process.env.PORT || 3000, function(){
+    console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
+});
 
 console.log("Server running at http://localhost:%d", port);

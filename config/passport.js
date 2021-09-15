@@ -7,13 +7,13 @@ const User = require('../models/User')
 const bcrypt = require('bcryptjs')
 
 
-const passport = function(passport) {
+module.exports = function(passport) {
     passport.use(
         new GoogleStrategy(
             {
-                clientID: process.env["GOOGLE_CLIENT_ID"],
-                clientSecret: process.env["GOOGLE_CLIENT_SECRET"],
-                callbackURL: process.env["ROOT_URL"] + 'auth/google/callback'
+                clientID: process.env.GOOGLE_CLIENT_ID,
+                clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+                callbackURL: process.env.ROOT_URL + 'auth/google/callback'
             },
             async (accessToken, refreshToken, profile, done) => {
                 const newUser = {
@@ -45,9 +45,9 @@ const passport = function(passport) {
     passport.use(
         new TwitterStrategy(
             {
-                consumerKey: process.env["TWITTER_CONSUMER_KEY"],
-                consumerSecret: process.env["TWITTER_CONSUMER_SECRET"],
-                callbackURL: process.env["ROOT_URL"] + "auth/twitter/callback",
+                consumerKey: process.env.TWITTER_CONSUMER_KEY,
+                consumerSecret: process.env.TWITTER_CONSUMER_SECRET,
+                callbackURL: process.env.ROOT_URL + "auth/twitter/callback",
                 includeEmail: true
             },
             async (accessToken, refreshToken, profile, done) => {
@@ -81,9 +81,9 @@ const passport = function(passport) {
     passport.use(
         new FacebookStrategy(
             {
-                clientID: process.env["FB_CLIENT_ID"],
-                clientSecret: process.env["FB_CLIENT_SECRET"],
-                callbackURL: process.env["ROOT_URL"] + "auth/facebook/callback"
+                clientID: process.env.FB_CLIENT_ID,
+                clientSecret: process.env.FB_CLIENT_SECRET,
+                callbackURL: process.env.ROOT_URL + "auth/facebook/callback"
             },
             async (accessToken, refreshToken, profile, done) => {
                 if(profile.firstName) {
@@ -149,5 +149,3 @@ const passport = function(passport) {
         User.findById(id, (err, user) => done(err, user))
     })
 }
-
-module.exports = passport

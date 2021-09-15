@@ -12,6 +12,7 @@ const session = require('express-session')
 const connectDB = require('./config/db')
 const moment = require('moment')
 const methodOverride = require('method-override')
+const http = require('http')
 
 //HTTPS
 
@@ -21,11 +22,11 @@ const cert = fs.readFileSync('cert.pem');
 
 // Load config
 dotenv.config({
-    path: './config/web.config'
+    path: 'web.config'
 })
 
 // Passport config
-require('./config/passport')()
+require('./config/passport')(passport)
 
 connectDB()
 
@@ -83,8 +84,11 @@ app.use(function(req,res){
     })
 });
 
-const PORT = process.env.PORT || 3000
 
-const server = https.createServer({key: key, cert: cert }, app);
 
-server.listen(PORT, () => { console.log(`Server running on port ${PORT}`) });
+const server = http.createServer(app);
+
+const port = process.env.PORT || 3000;
+server.listen(port);
+
+console.log("Server running at http://localhost:%d", port);

@@ -72,9 +72,13 @@ app.use(passport.session())
 app.use(express.static(path.join(__dirname, 'public')))
 
 // Routes
-app.use('/', require('./routes/index'))
+//app.use('/', require('./routes/index'))
 app.use('/auth', require('./routes/auth'))
 app.use('/recipes', require('./routes/recipes'))
+
+app.get('/', async (req, res) => {
+    res.send("hello")
+})
 
 //404 Page
 app.use(function(req,res){

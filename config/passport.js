@@ -22,7 +22,8 @@ module.exports = function(passport) {
                     displayName: profile.displayName,
                     firstName: profile.name.givenName,
                     lastName: profile.name.familyName,
-                    image: profile.photos[0].value
+                    image: profile.photos[0].value,
+                    defImage: true
                 }
 
                 try {
@@ -58,7 +59,8 @@ module.exports = function(passport) {
                     displayName: profile.displayName,
                     firstName: profile.displayName,
                     lastName: null,
-                    image: profile.profile_image_url
+                    image: profile.profile_image_url,
+                    defImage: true
                 }
     
                 try {
@@ -102,7 +104,8 @@ module.exports = function(passport) {
                     displayName: profile.displayName,
                     firstName: firstName,
                     lastName: profile.givenName,
-                    image: imageURL
+                    image: imageURL,
+                    defImage: true
                 }
     
                 try {

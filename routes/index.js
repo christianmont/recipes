@@ -98,11 +98,13 @@ router.get('/sign-up', ensureGuest, (req, res) => {
 
 router.post('/sign-up', upload.single('image'), async (req, res) => {
     try {
+        var defImage = false;
         const hashedPassword = await bcrypt.hashSync(req.body.password, 10)
         if(req.file) {
             var filePath = req.file.path.substring(7)
         } else {
             var filePath = "https://grandimageinc.com/wp-content/uploads/2015/09/icon-user-default.png"
+            defImage = true;
         }
         const newUser = {
             site: 'main',
@@ -113,7 +115,8 @@ router.post('/sign-up', upload.single('image'), async (req, res) => {
             displayName: req.body.firstName + " " + req.body.lastName,
             firstName: req.body.firstName,
             lastName: req.body.lastName,
-            image: filePath
+            image: filePath,
+            defImage: defImage
         }
 
         try {

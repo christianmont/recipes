@@ -39,6 +39,10 @@ const UserSchema = new mongoose.Schema({
         type: Boolean,
         default: false
     },
+    defImage: {
+        type: Boolean,
+        required: true
+    },
     createdAt: {
         type: Date,
         default: Date.now

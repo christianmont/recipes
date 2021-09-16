@@ -42,7 +42,7 @@ router.post('/add', async (req, res) => {
                     if(dimensions.width < 960 || dimensions.height < 960) {
                         imgTooSmall = true;
                     }
-                    filePaths.push(process.env.ROOT_URL + f.path.substring(7))
+                    filePaths.push(f.path.substring(7))
                 }
             )
             if(!req.user) {
@@ -291,7 +291,7 @@ router.post('/:id', async (req, res) => {
                 }
                 try {
                     if(req.file) {
-                        var filePath = process.env.ROOT_URL + req.file.path.substring(7)
+                        var filePath = req.file.path.substring(7)
                         var dimensions = sizeOf(req.file.path);
                         if(dimensions.width < 960 || dimensions.height < 960) {
                             var imgTooSmall = true;
@@ -369,7 +369,7 @@ router.post('/:id', async (req, res) => {
                 }
                 try {
                     if(req.file) {
-                        var filePath = process.env.ROOT_URL + req.file.path.substring(7)
+                        var filePath = req.file.path.substring(7)
                         var dimensions = sizeOf(req.file.path);
                         if(dimensions.width < 960 || dimensions.height < 960) {
                             var imgTooSmall = true;
@@ -484,7 +484,7 @@ router.put('/edit/:id', async (req, res) => {
                     if(dimensions.width < 960 || dimensions.height < 960) {
                         imgTooSmall = true;
                     }
-                    filePaths.push(process.env.ROOT_URL + f.path.substring(7))
+                    filePaths.push(f.path.substring(7))
                 }
             )
             if(!req.user) {

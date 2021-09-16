@@ -100,7 +100,7 @@ router.post('/sign-up', upload.single('image'), async (req, res) => {
     try {
         const hashedPassword = await bcrypt.hashSync(req.body.password, 10)
         if(req.file) {
-            var filePath = process.env.ROOT_URL + req.file.path.substring(7)
+            var filePath = req.file.path.substring(7)
         } else {
             var filePath = "https://grandimageinc.com/wp-content/uploads/2015/09/icon-user-default.png"
         }
@@ -289,7 +289,7 @@ router.get('/search', async (req, res) => {
 router.post('/change-image', upload.single('image'), async(req, res) => {
     try {
         if(req.file && req.user) {
-            var filePath = process.env.ROOT_URL + req.file.path.substring(7)
+            var filePath = req.file.path.substring(7)
             User.findOneAndUpdate({_id: req.user._id}, {image: filePath},
                 function( error, result){
                 })

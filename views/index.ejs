@@ -3,7 +3,7 @@
         <div class="recipe-card">
             <a href="recipes/<%=recipe.id%>">
                 <div class="img-container">
-                    <img class="card-img-top" src=process.env.ROOT_URL+"<%=recipe.images[0]%>" alt="Card image cap">
+                    <img class="card-img-top" src="<%=process.env.ROOT_URL%><%=recipe.images[0]%>" alt="Card image cap">
                 </div>
             </a>
             <div class="card-body">

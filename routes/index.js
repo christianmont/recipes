@@ -407,6 +407,8 @@ router.get('/confirm-email', async (req, res) => {
         if(req.query.user) {
             var user = await User.findOne({_id: req.query.user})
             var email = user.email
+            console.log(email)
+            console.log(process.env.EMAIL_PWORD)
             var confCode = uuid_v4()
             const hashedCode = await bcrypt.hashSync(confCode, 10)
             const newCode = {

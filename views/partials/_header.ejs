@@ -36,7 +36,7 @@
                     <% if(user.defImage) { %>
                         <img src="<%=user.image%>">
                     <% } else { %>
-                        <img src="<%=process.env.ROOT_URL%><%=user.image%>">
+                        <img src="../<%=user.image%>">
                     <% } %>
                 </button>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">

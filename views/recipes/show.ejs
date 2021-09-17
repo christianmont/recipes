@@ -1,5 +1,5 @@
 <div class="recipe-display">
-    <% if(recipe.user._id === user._id) { %>
+    <% if(recipe.user && recipe.user._id === user.id) { %>
         <a href="edit/<%=recipe._id%>"><img class="edit-icon" src="/uploads/edit-icon.png"></a>
     <% } %>
     <h1><%=recipe.title%></h1>

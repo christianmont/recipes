@@ -122,7 +122,7 @@ router.post('/add', async (req, res) => {
                     directions: req.body.directions,
                     user: req.user.id
                 }
-                var thisRecipe = new Recipe.create(newRecipe)
+                var thisRecipe = new Recipe(newRecipe)
                 res.send(`Hi ${thisRecipe._id}`)
             }
         } catch(err) {

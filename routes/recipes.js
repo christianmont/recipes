@@ -122,11 +122,7 @@ router.post('/add', async (req, res) => {
                     user: req.user.id
                 }
                 var thisRecipe = Recipe.create(newRecipe)
-                var recipeID
-                thisRecipe.save(function(err,recipe){
-                    recipeID = recipe._id;
-                });
-                res.send(`Recipe Id is ${recipeID}`)
+                res.send(`Recipe Id is ${thisRecipe.id}`)
             }
         } catch(err) {
             console.error(err)

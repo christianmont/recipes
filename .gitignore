@@ -3,6 +3,9 @@ logs
 *.log
 npm-debug.log*
 
+#Environment variables
+web.config
+
 # Runtime data
 pids
 *.pid

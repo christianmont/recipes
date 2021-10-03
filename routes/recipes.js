@@ -4,6 +4,7 @@ const multer = require('multer')
 var sizeOf = require('image-size');
 const { ensureAuth, ensureGuest } = require('../middleware/auth')
 const https = require('https');
+var mongoose = require('mongoose');
 
 const User = require('../models/User')
 const Recipe = require('../models/Recipe')
@@ -108,7 +109,9 @@ router.post('/add', async (req, res) => {
                     directions: req.body.directions
                 })
             } else {
+                var newId = new mongoose.mongo.ObjectId();
                 const newRecipe = {
+                    id: newId,
                     images: filePaths,
                     prep: req.body.prep,
                     cook: req.body.cook,
@@ -122,7 +125,7 @@ router.post('/add', async (req, res) => {
                     user: req.user.id
                 }
                 var thisRecipe = await Recipe.create(newRecipe)
-                res.send(`Recipe Id is ${thisRecipe.id}`)
+                res.redirect(`recipes/${newId}`)
             }
         } catch(err) {
             console.error(err)

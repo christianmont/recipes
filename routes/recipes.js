@@ -43,7 +43,6 @@ router.post('/add', async (req, res) => {
                         imgTooSmall = true;
                     }
                     filePaths.push(f.path.substring(7))
-                    filePaths.push(f.path)
                 }
             )
             if(!req.user) {
@@ -123,7 +122,7 @@ router.post('/add', async (req, res) => {
                     user: req.user.id
                 }
                 var thisRecipe = Recipe.create(newRecipe)
-                res.redirect(`/recipes/${thisRecipe._id}`);
+                res.redirect(`/recipes/${thisRecipe.id}`);
             }
         } catch(err) {
             console.error(err)

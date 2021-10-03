@@ -43,7 +43,7 @@ router.post('/add', async (req, res) => {
                         imgTooSmall = true;
                     }
                     filePaths.push(f.path.substring(7))
-                    console.log(f.path)
+                    filePaths.push(f.path)
                 }
             )
             if(!req.user) {

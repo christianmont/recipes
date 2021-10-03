@@ -123,14 +123,7 @@ router.post('/add', async (req, res) => {
                     user: req.user.id
                 }
                 var thisRecipe = Recipe.create(newRecipe)
-                thisRecipe.save(function(err, savedQuestion) {
-                    /*if (err) console.log(err);
-                    else{
-                        var questionId = savedQuestion._id;
-                        res.send(`successfully added question with id ${questionId}`);
-                    }*/
-                });
-                res.send("Hi")
+                res.send(`Hi ${thisRecipe._id}`)
             }
         } catch(err) {
             console.error(err)

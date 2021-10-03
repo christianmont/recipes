@@ -126,7 +126,7 @@ router.post('/add', async (req, res) => {
                 thisRecipe.save(function(err,recipe){
                     recipeID = recipe._id;
                 });
-                res.redirect(`/recipes/${recipeID}`);
+                res.send(`Recipe Id is ${recipeID}`)
             }
         } catch(err) {
             console.error(err)

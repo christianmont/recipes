@@ -109,7 +109,7 @@ router.post('/add', async (req, res) => {
                     directions: req.body.directions
                 })
             } else {
-                const newRecipe = {
+                const newRecipe = new Recipe({
                     images: filePaths,
                     prep: req.body.prep,
                     cook: req.body.cook,
@@ -121,9 +121,9 @@ router.post('/add', async (req, res) => {
                     ingredients: req.body.ingredients,
                     directions: req.body.directions,
                     user: req.user.id
-                }
-                var thisRecipe = new Recipe(newRecipe)
-                res.redirect(`recipes/${thisRecipe._id}`)
+                })
+                Recipe.create(newRecipe)
+                res.redirect(`/${newRecipe.id}`)
             }
         } catch(err) {
             console.error(err)

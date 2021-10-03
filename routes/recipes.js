@@ -109,9 +109,7 @@ router.post('/add', async (req, res) => {
                     directions: req.body.directions
                 })
             } else {
-                var newId = new mongoose.mongo.ObjectId();
                 const newRecipe = {
-                    id: newId,
                     images: filePaths,
                     prep: req.body.prep,
                     cook: req.body.cook,
@@ -125,7 +123,13 @@ router.post('/add', async (req, res) => {
                     user: req.user.id
                 }
                 var thisRecipe = await Recipe.create(newRecipe)
-                res.redirect(`recipes/${newId}`)
+                thisRecipe.save(function(err, savedQuestion) {
+                    /*if (err) console.log(err);
+                    else{
+                        var questionId = savedQuestion._id;
+                        console.log("successfully added question with id", questionId);
+                    }*/
+                });
             }
         } catch(err) {
             console.error(err)

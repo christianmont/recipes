@@ -121,7 +121,7 @@ router.post('/add', async (req, res) => {
                     directions: req.body.directions,
                     user: req.user.id
                 }
-                var thisRecipe = await Recipe.create(newRecipe)
+                var thisRecipe = Recipe.create(newRecipe)
                 res.redirect(`/recipes/${thisRecipe._id}`);
             }
         } catch(err) {

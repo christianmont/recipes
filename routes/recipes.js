@@ -122,7 +122,7 @@ router.post('/add', async (req, res) => {
                     user: req.user.id
                 }
                 var thisRecipe = Recipe.create(newRecipe)
-                res.redirect(`/recipes/${thisRecipe.id}`);
+                res.redirect(`/recipes/${thisRecipe._id}`);
             }
         } catch(err) {
             console.error(err)

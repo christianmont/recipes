@@ -124,11 +124,11 @@ router.post('/add', async (req, res) => {
                 }
                 var thisRecipe = Recipe.create(newRecipe)
                 thisRecipe.save(function(err, savedQuestion) {
-                    if (err) console.log(err);
+                    /*if (err) console.log(err);
                     else{
                         var questionId = savedQuestion._id;
                         res.send(`successfully added question with id ${questionId}`);
-                    }
+                    }*/
                 });
                 res.send("Hi")
             }

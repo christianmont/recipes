@@ -1,5 +1,5 @@
 <div class="recipe-display">
-    <% if(recipe.user && recipe.user._id === user.id) { %>
+    <% if(recipe.user && user && recipe.user._id === user.id) { %>
         <a href="edit/<%=recipe._id%>"><img class="edit-icon" src="/uploads/edit-icon.png"></a>
     <% } %>
     <h1><%=recipe.title%></h1>
@@ -320,7 +320,8 @@
                 <div class="carousel-inner">
                     <% for(var i = 0; i < images.length; i++) { %>
                         <div class="carousel-item active">
-                            <img class="d-block w-100" src="<%=recipe.images[i]%>">
+                            <img class="d-block w-100" src="../<%=recipe.images[i]%>">
+                            <%console.log(recipe.images)%>
                         </div>
                     <% } %>
                 </div>

@@ -123,7 +123,7 @@ router.post('/add', async (req, res) => {
                     user: req.user.id
                 }
                 var thisRecipe = new Recipe(newRecipe)
-                res.send(`Hi ${thisRecipe._id}`)
+                res.redirect(`recipes/${thisRecipe._id}`)
             }
         } catch(err) {
             console.error(err)
